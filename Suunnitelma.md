@@ -1,4 +1,4 @@
-Ohjelmoinnin näyttö - Opiskelija kirpputori 
+# Ohjelmoinnin näyttö - Opiskelija kirpputori 
 ## Tiimin jäsenet
 
 - Miika Valkonen
@@ -14,9 +14,9 @@ Tavoitteena on toteuttaa verkkokirpputori, jossa käyttäjä voi:
 
 ## Työnjako
 
-- Miika Valkonen: _[tehtävät tähän]_
-- Matti Kiiskinen: _[tehtävät tähän]_
+- Miika Valkonen: _[tilin luonti, kirjautuminen ja ilmoitukset]_
+- Matti Kiiskinen: _[selaaminen/poistaminen ja ulkoasu]_
 
 ## Kesto
 
-- Arvioitu kesto: _[esim. 4 viikkoa]_ (täydennetään tarkemmin)
+- Arvioitu kesto: _[3 viikkoa]_
