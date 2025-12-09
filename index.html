@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <p>Opiskelija Kirpputori</p>
+        <a href="#" id="OpenLogIn">Kirjaudu sisään</a>
+    </nav>
+
+    <!-- Kirjautumis formi -->
+    <div class="main" id="loginForm">
+        <h1>Kirjaudu sisään</h1>
+
+        <form action="">
+            <label for="logUsername">Käyttäjätunnus:</label>
+            <input type="text" id="logUsername" name="logUsername" placeholder="Syötä käyttäjänimesi" required>
+
+            <label for="LogPassword">Salasana:</label>
+            <input type="password" id="LogPassword" name="LogPassword" placeholder="Syötä salasanasi" required>
+
+            <button type="submit">Kirjaudu</button>
+            <button type="button" id="closeLogIn">Sulje</button>
+        </form>
+        
+        <p>Eikö ole käyttäjää?
+            <a href="#" id="openReg" style="text-decoration: none;">
+                Luo se tästä
+            </a>
+        </p>
+    </div>
+
+    <!-- Rekisteröinti formi -->
+     <div class="main" id="registerForm">
+        <h1>Rekisteröinti</h1>
+
+        <form action="">
+            <label for="regUsername">Käyttäjätunnus:</label>
+            <input type="text" id="regUsername" name="regUsername" placeholder="Syötä käyttäjätunnuksesi" required>
+
+            <label for="regPassword">Salasana:</label>
+            <input type="password" id="regPassword" name="regPassword" placeholder="Syötä salasanasi" required>
+
+            <button type="submit">Luo käyttäjä</button>
+            <button type="button" id="closeReg">Sulje</button>
+        </form>
+        
+        <p>Onko sinulla jo käyttäjä?
+            <a href="#" id="LoginToReg" style="text-decoration: none;">
+                Kirjaudu sisään tästä
+            </a>
+        </p>
+    </div>
+
+    <!-- Scripts -->
+     <script src="main.js"></script>
+</body>
+</html>
