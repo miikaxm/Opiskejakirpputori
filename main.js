@@ -94,8 +94,10 @@ function updateState() {
     document.getElementById("loggedUsername").innerHTML = loggedInUser
     if (loggedInUser !== "") {
         document.getElementById("OpenLogIn").innerHTML = "Kirjaudu ulos"
+        document.getElementById("createSellOffer").style.display = "block"
     } else {
         document.getElementById("OpenLogIn").innerHTML = "Kirjaudu sisään"
+        document.getElementById("createSellOffer").style.display = "none"
     }
 }
 

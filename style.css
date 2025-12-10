@@ -79,3 +79,14 @@ button {
 .rightNav {
   float: right;
 }
+
+#createSellOffer {
+    display: none;
+    margin-right: 20px;
+    margin-top: 7px;
+    padding: 12px;
+    border-radius: 10px;
+    font-family: "Inter", sans-serif;
+    background-color: #5686bd;
+    font-size: 17px;
+}
