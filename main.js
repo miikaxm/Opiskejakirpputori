@@ -98,3 +98,41 @@ function updateState() {
         document.getElementById("OpenLogIn").innerHTML = "Kirjaudu sisään"
     }
 }
+
+
+// Haetaan ilmoitukset localStoragesta
+let ilmoitukset = JSON.parse(localStorage.getItem("ilmoitukset")) || [];
+
+// Ilmoituslistan päivitys sivulle
+function paivitaLista() {
+    const lista = document.getElementById("ilmoitusLista");
+    if (!lista) return; // Jos ilmoituslistaa ei ole
+
+    lista.innerHTML = "";
+
+    if (ilmoitukset.length === 0) {
+        lista.innerHTML = `<p class="emptyMessage">Ei ilmoituksia vielä.</p>`;
+        return;
+    }
+
+    ilmoitukset.forEach(item => {
+        lista.innerHTML += `
+            <div class="card">
+                <button class="removeBtn" onclick="poistaIlmoitus(${item.id})">×</button>
+                <img src="${item.kuva}" alt="${item.otsikko}">
+                <h3 class="card-title">${item.otsikko}</h3>
+                <p>Hinta: <strong>${item.hinta} €</strong></p>
+            </div>
+        `;
+    });
+}
+
+// Poistaa ilmoituksen ID:n perusteella
+function poistaIlmoitus(id) {
+    ilmoitukset = ilmoitukset.filter(item => item.id !== id);
+    localStorage.setItem("ilmoitukset", JSON.stringify(ilmoitukset));
+    paivitaLista();
+}
+
+// Listan päivitys
+paivitaLista();
