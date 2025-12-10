@@ -8,13 +8,16 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav>
-        <p>Opiskelija Kirpputori</p>
-        <a href="#" id="OpenLogIn">Kirjaudu sisään</a>
-    </nav>
+     <div class="nav">
+        <a>Opiskelija Kirpputori</a>
+        <div class="rightNav">
+            <a href="#" id="OpenLogIn">Kirjaudu sisään</a>
+            <a id="loggedUsername"></a>
+        </div>
+     </div>
 
     <!-- Kirjautumis formi -->
-    <div class="main" id="loginForm">
+    <div class="form" id="loginForm">
         <h1>Kirjaudu sisään</h1>
 
         <form action="">
@@ -36,7 +39,7 @@
     </div>
 
     <!-- Rekisteröinti formi -->
-     <div class="main" id="registerForm">
+     <div class="form" id="registerForm">
         <h1>Rekisteröinti</h1>
 
         <form action="">

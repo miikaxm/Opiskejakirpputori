@@ -1,9 +1,21 @@
 // Formit
 const loginForm = document.getElementById("loginForm")
 const regForm = document.getElementById("registerForm")
+let loggedInUser = ""
+
+// Eventlistenerit kirjautumiselle ja rekisteröitymiselle
+document.getElementById("registerForm").addEventListener("submit", register)
+document.getElementById("loginForm").addEventListener("submit", logIn)
 
 // Formien avaukset
-document.getElementById("OpenLogIn").addEventListener("click", () => {loginForm.style.display = "block"});
+document.getElementById("OpenLogIn").addEventListener("click", () => {
+    if (loggedInUser === "") {
+        loginForm.style.display = "block"
+    } else {
+        loggedInUser = ""
+        updateState()
+    }
+});
 
 document.getElementById("openReg").addEventListener("click", () => {
     loginForm.style.display = "none"
@@ -19,3 +31,70 @@ document.getElementById("LoginToReg").addEventListener("click", () => {
     regForm.style.display = "none"
     loginForm.style.display = "block"
 })
+
+function getUsers() {
+    return JSON.parse(localStorage.getItem("users") || "[]")
+}
+
+function saveUsers(users) {
+    localStorage.setItem("users", JSON.stringify(users))
+}
+
+function register(event){
+    event.preventDefault()
+    const username = document.getElementById("regUsername").value.trim()
+    const password = document.getElementById("regPassword").value
+    const users = getUsers()
+
+    if(users.some(u => u.username.toLowerCase() === username.toLowerCase())) {
+        // Tähän parempi ilmoitus myöhemmin
+        alert("käyttähä on jo olemassa")
+        return
+    }
+
+    const newU= {
+        username,
+        password
+    }
+
+    users.push(newU)
+    saveUsers(users)
+    regForm.style.display = "none"
+    document.getElementById("regUsername").value = ""
+    document.getElementById("regPassword").value = ""
+}
+
+function logIn(event){
+    event.preventDefault()
+    const username = document.getElementById("logUsername").value.trim()
+    const password = document.getElementById("LogPassword").value
+    const users = getUsers()
+
+    const user = users.find(u => u.username.toLowerCase() === username.toLowerCase())
+
+    if(!user) {
+        // Tähänkin parempi ilmoitus myöhemmin
+        alert("Ei löydy käyttäjää tällä nimellä")
+    }
+
+    if (user.password === password) {
+        loggedInUser = username
+        updateState()
+        loginForm.style.display = "none"
+        document.getElementById("LogPassword").value = ""
+        document.getElementById("logUsername").value = ""
+    } else {
+        // Tähänkin parempi ilmoitus myöhemmin
+        alert("Väärä salasana")
+        document.getElementById("LogPassword").value = ""
+    }
+}
+
+function updateState() {
+    document.getElementById("loggedUsername").innerHTML = loggedInUser
+    if (loggedInUser !== "") {
+        document.getElementById("OpenLogIn").innerHTML = "Kirjaudu ulos"
+    } else {
+        document.getElementById("OpenLogIn").innerHTML = "Kirjaudu sisään"
+    }
+}
