@@ -61,6 +61,29 @@
         </p>
     </div>
 
+    <!-- Ilmoituksen luonti -->
+     <div class="form" id="createOffer">
+        <h1>Luo myynti-ilmoitus</h1>
+
+        <form>
+            <label for="title">Otsikko:</label>
+            <input type="text" id="title" name="title" placeholder="Syötä otsikko" required>
+            
+            <label for="price">Hinta:</label>
+            <input type="text" id="price" name="price" placeholder="Syötä hinta" required>
+
+            <label for="photo">Kuva:</label>
+            <input type="file" id="photo" name="photo" accept="image/png, image/jpeg"/>
+
+            <button type="submit">Luo ilmoitus</button>
+            <button type="button" id="closeCreate">Sulje</button>
+        </form>
+     </div>
+
+    <!-- Ilmoitukset -->
+     <div class="ilmoitusLista" id="ilmoitusLista">
+     </div>
+
     <!-- Scripts -->
      <script src="main.js"></script>
 </body>

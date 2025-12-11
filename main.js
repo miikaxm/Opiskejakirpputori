@@ -1,11 +1,13 @@
 // Formit
 const loginForm = document.getElementById("loginForm")
 const regForm = document.getElementById("registerForm")
+const createOfferForm = document.getElementById("createOffer")
 let loggedInUser = ""
 
 // Eventlistenerit kirjautumiselle ja rekisteröitymiselle
 document.getElementById("registerForm").addEventListener("submit", register)
 document.getElementById("loginForm").addEventListener("submit", logIn)
+document.getElementById("createOffer").addEventListener("submit", createOffer)
 
 // Formien avaukset
 document.getElementById("OpenLogIn").addEventListener("click", () => {
@@ -22,9 +24,12 @@ document.getElementById("openReg").addEventListener("click", () => {
     regForm.style.display = "block"
 })
 
+document.getElementById("createSellOffer").addEventListener("click", () => {createOfferForm.style.display = "block"})
+
 // Formien sulkemiset
 document.getElementById("closeLogIn").addEventListener("click", () => {loginForm.style.display = "none"})
 document.getElementById("closeReg").addEventListener("click", () => {regForm.style.display ="none"})
+document.getElementById("closeCreate").addEventListener("click", () => {createOfferForm.style.display = "none"})
 
 // Kirjautumis formin avaus rekisteröitymisestä
 document.getElementById("LoginToReg").addEventListener("click", () => {
@@ -38,6 +43,14 @@ function getUsers() {
 
 function saveUsers(users) {
     localStorage.setItem("users", JSON.stringify(users))
+}
+
+function getOffers() {
+    return JSON.parse(localStorage.getItem("ilmoitukset")) || [];
+}
+
+function saveOffers (offers) {
+    return localStorage.setItem("ilmoitukset", JSON.stringify(offers))
 }
 
 function register(event){
@@ -101,12 +114,47 @@ function updateState() {
     }
 }
 
+function createOffer(event) {
+    event.preventDefault()
+    const otsikko = document.getElementById("title").value
+    const hinta = document.getElementById("price").value
+    const photoInput = document.getElementById("photo")
+    const file = photoInput.files[0]
+    
+    if (!file) {
+        alert("Valitse kuva")
+        return
+    }
 
-// Haetaan ilmoitukset localStoragesta
-let ilmoitukset = JSON.parse(localStorage.getItem("ilmoitukset")) || [];
+    const reader = new FileReader()
+    
+    reader.onload = function(e) {
+        const kuva = e.target.result
+        const ilmoitukset = getOffers()
+        const id = ilmoitukset.length + 1
+
+        const newOffer = {
+            otsikko,
+            hinta,
+            kuva,
+            id
+        }
+
+        ilmoitukset.push(newOffer)
+        saveOffers(ilmoitukset)
+        createOfferForm.style.display = "none"
+        document.getElementById("title").value = ""
+        document.getElementById("price").value = ""
+        photoInput.value = ""
+        paivitaLista()
+    }
+
+    reader.readAsDataURL(file)
+}
 
 // Ilmoituslistan päivitys sivulle
 function paivitaLista() {
+    const ilmoitukset = getOffers()
     const lista = document.getElementById("ilmoitusLista");
     if (!lista) return; // Jos ilmoituslistaa ei ole
 
@@ -122,8 +170,8 @@ function paivitaLista() {
             <div class="card">
                 <button class="removeBtn" onclick="poistaIlmoitus(${item.id})">×</button>
                 <img src="${item.kuva}" alt="${item.otsikko}">
-                <h3 class="card-title">${item.otsikko}</h3>
-                <p>Hinta: <strong>${item.hinta} €</strong></p>
+                <h2 class="card-title">${item.otsikko}</h2>
+                <h3>Hinta: <strong>${item.hinta} €</strong></h3>
             </div>
         `;
     });
@@ -131,6 +179,7 @@ function paivitaLista() {
 
 // Poistaa ilmoituksen ID:n perusteella
 function poistaIlmoitus(id) {
+    let ilmoitukset = getOffers()
     ilmoitukset = ilmoitukset.filter(item => item.id !== id);
     localStorage.setItem("ilmoitukset", JSON.stringify(ilmoitukset));
     paivitaLista();
