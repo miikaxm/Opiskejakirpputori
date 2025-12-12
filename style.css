@@ -109,3 +109,74 @@ button {
     border-radius: 8px;
     margin-bottom: 15px;
 }
+
+/* Tumma tausta */
+body {
+    background: #1e1e1e;
+    color: #eaeaea;
+}
+
+/* Ilmoituslista  */
+.ilmoitusLista {
+    margin-top: 90px;
+    padding: 0 20px;
+}
+
+/* Ilmoituskortti */
+.ilmoitusLista > div {
+    background-color: #2b2b2b;
+    border-radius: 14px;
+    padding: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+/* Otsikko */
+.card-title {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+/* Hinta */
+.ilmoitusLista p {
+    margin: 0;
+    color: #dcdcdc;
+}
+
+/* Poistopainike */
+.removeBtn {
+    position: absolute;
+    top: 5px;
+    right: 16px;
+
+    width: 32px;
+    height: 32px;
+
+    background: #e74c3c;
+    border: none;
+    border-radius: 50%;
+
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    cursor: pointer;
+}
+
+.removeBtn:hover {
+    background: #c0392b;
+}
+
+/* Tyhjän listan ilmoitus */
+.emptyMessage {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 18px;
+    color: #aaaaaa;
+}
