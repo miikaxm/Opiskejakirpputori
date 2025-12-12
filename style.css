@@ -7,9 +7,10 @@ body {
     font-family: "Inter", sans-serif;
     line-height: 1.5;
     min-height: 100vh;
-    background: #f3f3f3;
+    background: #1e1e1e;
     flex-direction: column;
     margin: 0;
+    color: #eaeaea;
 }
 
 .form {
@@ -22,6 +23,7 @@ body {
     text-align: center;
     display: none;
     position: fixed;
+    z-index: 9999;
 }
 
 label {
@@ -108,18 +110,6 @@ button {
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
-}
-
-/* Tumma tausta */
-body {
-    background: #1e1e1e;
-    color: #eaeaea;
-}
-
-/* Ilmoituslista  */
-.ilmoitusLista {
-    margin-top: 90px;
-    padding: 0 20px;
 }
 
 /* Ilmoituskortti */
