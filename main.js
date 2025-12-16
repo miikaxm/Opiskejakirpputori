@@ -16,6 +16,7 @@ document.getElementById("OpenLogIn").addEventListener("click", () => {
     } else {
         loggedInUser = ""
         updateState()
+        paivitaLista()
     }
 });
 
@@ -96,6 +97,7 @@ function logIn(event){
         loginForm.style.display = "none"
         document.getElementById("LogPassword").value = ""
         document.getElementById("logUsername").value = ""
+        paivitaLista()
     } else {
         // Tähänkin parempi ilmoitus myöhemmin
         alert("Väärä salasana")
@@ -117,6 +119,7 @@ function updateState() {
 function createOffer(event) {
     event.preventDefault()
     const otsikko = document.getElementById("title").value
+    const creator = document.getElementById("loggedUsername").innerHTML
     const hinta = document.getElementById("price").value
     const photoInput = document.getElementById("photo")
     const file = photoInput.files[0]
@@ -137,7 +140,8 @@ function createOffer(event) {
             otsikko,
             hinta,
             kuva,
-            id
+            id,
+            creator
         }
 
         ilmoitukset.push(newOffer)
@@ -166,7 +170,8 @@ function paivitaLista() {
     }
 
     ilmoitukset.forEach(item => {
-        lista.innerHTML += `
+        if (item.creator === loggedInUser) {
+            lista.innerHTML += `
             <div class="card">
                 <button class="removeBtn" onclick="poistaIlmoitus(${item.id})">×</button>
                 <img src="${item.kuva}" alt="${item.otsikko}">
@@ -174,6 +179,15 @@ function paivitaLista() {
                 <h3>Hinta: <strong>${item.hinta} €</strong></h3>
             </div>
         `;
+        } else {
+            lista.innerHTML += `
+            <div class="card">
+                <img src="${item.kuva}" alt="${item.otsikko}">
+                <h2 class="card-title">${item.otsikko}</h2>
+                <h3>Hinta: <strong>${item.hinta} €</strong></h3>
+            </div>
+        `;
+        }
     });
 }
 
