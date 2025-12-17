@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/* Sumennus overlay */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 9998;
+    display: none;
+}
+
 body {
     display: flex;
     align-items: center;
@@ -13,6 +24,7 @@ body {
     color: #eaeaea;
 }
 
+/* Etusivun otsikointi */
 .etusivu-otsikko {
     width: 100%;
     align-self: stretch;
@@ -33,10 +45,11 @@ body {
     color: #cccccc;
 }
 
+/* Formin tyylit */
 .form {
-    background-color: #fff;
+    background-color: #2b2b2b;
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     padding: 10px 20px;
     transition: transform 0.2s;
     width: 500px;
@@ -52,7 +65,7 @@ label {
     margin-top: 10px;
     margin-bottom: 5px;
     text-align: left;
-    color: #555;
+    color: #cccccc;
     font-weight: bold;
 }
 
@@ -63,8 +76,10 @@ input {
     padding: 10px;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
-    border: 1px solid #ddd;
+    border: 1px solid #444;
     border-radius: 5px;
+    background-color: #1e1e1e;
+    color: #eaeaea;
 }
 
 button {
@@ -81,6 +96,7 @@ button {
     font-size: 16px;
 }
 
+/* Navbar */
 .nav {
     background-color: #333;
     overflow: hidden;
@@ -102,6 +118,7 @@ button {
   float: right;
 }
 
+/* Ilmoitusten luonti nappi navbarissa */
 #createSellOffer {
     display: none;
     margin-right: 20px;
@@ -113,8 +130,7 @@ button {
     font-size: 17px;
 }
 
-/* Ilmoitusten tyylit alustavasti */
-
+/* Ilmoitusten tyylit */
 .ilmoitusLista {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
