@@ -38,6 +38,8 @@
             <label for="LogPassword">Salasana:</label>
             <input type="password" id="LogPassword" name="LogPassword" placeholder="Syötä salasanasi" required>
 
+            <p id="logError" style="color: red;"></p>
+
             <button type="submit">Kirjaudu</button>
             <button type="button" id="closeLogIn">Sulje</button>
         </form>
@@ -59,6 +61,8 @@
 
             <label for="regPassword">Salasana:</label>
             <input type="password" id="regPassword" name="regPassword" placeholder="Syötä salasanasi" required>
+
+            <p id="regError" style="color: red;"></p>
 
             <button type="submit">Luo käyttäjä</button>
             <button type="button" id="closeReg">Sulje</button>
@@ -85,6 +89,8 @@
             <label for="photo">Kuva:</label>
             <input type="file" id="photo" name="photo" accept="image/png, image/jpeg"/>
 
+            <p id="createError" style="color: red;"></p>
+
             <button type="submit">Luo ilmoitus</button>
             <button type="button" id="closeCreate">Sulje</button>
         </form>
@@ -109,6 +115,8 @@
             
             <label for="message">Viesti:</label>
             <input type="text" id="message" name="message" placeholder="Syötä viestisi" required>
+
+            <p id="sendError" style="color: red;"></p>
 
             <button type="submit">Lähetä viesti</button>
             <button type="button" id="closeSendMessage">Sulje</button>

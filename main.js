@@ -86,8 +86,7 @@ function register(event){
     const users = getUsers()
 
     if(users.some(u => u.username.toLowerCase() === username.toLowerCase())) {
-        // Tähän parempi ilmoitus myöhemmin
-        alert("käyttähä on jo olemassa")
+        document.getElementById("regError").innerText = "Käyttäjänimi on jo käytössä"
         return
     }
 
@@ -114,8 +113,7 @@ function logIn(event){
     const user = users.find(u => u.username.toLowerCase() === username.toLowerCase())
 
     if(!user) {
-        // Tähänkin parempi ilmoitus myöhemmin
-        alert("Ei löydy käyttäjää tällä nimellä")
+        document.getElementById("logError").innerText = "Käyttäjänimi tai salasana on väärä"
     }
 
     if (user.password === password) {
@@ -127,8 +125,7 @@ function logIn(event){
         document.querySelector(".overlay").style.display = "none";
         paivitaLista()
     } else {
-        // Tähänkin parempi ilmoitus myöhemmin
-        alert("Väärä salasana")
+        document.getElementById("logError").innerText = "Käyttäjänimi tai salasana on väärä"
         document.getElementById("LogPassword").value = ""
     }
 }
@@ -159,7 +156,7 @@ function createOffer(event) {
     const file = photoInput.files[0]
     
     if (!file) {
-        alert("Valitse kuva")
+        document.getElementById("createError").innerText = "Kuva on pakollinen ilmoitukseen"
         return
     }
 
@@ -203,8 +200,7 @@ function sendNewMessage(event) {
     const user = users.find(u => u.username.toLowerCase() === vastaanottaja.toLowerCase())
 
     if(!user) {
-        // Tähänkin parempi ilmoitus myöhemmin
-        alert("Vastaan ottajan käyttäjää ei löydy")
+        document.getElementById("sendError").innerText = "Vastaanottajan käyttäjää ei löydy"
         return
     }
 
