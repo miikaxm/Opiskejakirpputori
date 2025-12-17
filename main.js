@@ -311,7 +311,7 @@ function addExample() {
         id: 1,
         creator: "test"
     }
-
+    
     let testOffer2 = {
         otsikko: "Huonekaluja",
         hinta: "50",
@@ -337,6 +337,4 @@ function addExample() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    addExample()
-})
+addExample()
