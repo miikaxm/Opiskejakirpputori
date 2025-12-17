@@ -155,8 +155,11 @@ button {
     padding: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     position: relative;
+    transition: transform 0.2s;
 }
-
+.ilmoitusLista > div:hover {    
+    transform: translateY(-4px);
+ }
 /* Otsikko */
 .card-title {
     margin: 0 0 8px 0;

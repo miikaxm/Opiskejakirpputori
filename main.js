@@ -231,7 +231,7 @@ function paivitaLista() {
     if (!lista) return; // Jos ilmoituslistaa ei ole
 
     lista.innerHTML = "";
-
+// Jos ilmoituksia ei ole, näytetään viesti
     if (ilmoitukset.length === 0) {
         lista.innerHTML = `<p class="emptyMessage">Ei ilmoituksia vielä.</p>`;
         return;
