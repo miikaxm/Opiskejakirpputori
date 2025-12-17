@@ -304,21 +304,23 @@ function addExample() {
         password: "test"
     }
 
-    testOffer1 = {
+    let testOffer1 = {
         otsikko: "Vaatteita",
         hinta: "10",
         kuva: "img/junko-nakase-Q-72wa9-7Dg-unsplash.jpg",
         id: 1,
         creator: "test"
     }
-    testOffer2 = {
+    
+    let testOffer2 = {
         otsikko: "Huonekaluja",
         hinta: "50",
         kuva: "img/ansuman-mishra-5kza-6yGHnk-unsplash.jpg",
         id: 2,
         creator: "test"
     }
-    testOffer3 = {
+
+    let testOffer3 = {
         otsikko: "Kello",
         hinta: "70",
         kuva: "img/john-torcasio-TJrkkhdB39E-unsplash.jpg",
